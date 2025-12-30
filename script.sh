@@ -1,0 +1,2 @@
+#!/bin/bash
+pkill rackup; cd /usercode/automated-testing/server/; rackup -o 0.0.0.0 -p 8081 > rackup_output.txt 2>&1 & export DISPLAY=:1.0; useradd -m chromeuser; google-chrome --no-sandbox > chrome_output.txt 2>&1 & clear; cd /usercode/automated-testing; clear
