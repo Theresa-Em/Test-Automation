@@ -1,0 +1,12 @@
+<div class="example">
+  <h3>Horizontal Slider</h3>
+  <h4 class="subheader">Use the arrow keys to move the slider right and left.</h4>
+  <div class="sliderContainer">
+    <input type="range" min="0.0" max="5.0" step="0.5" value="0" onchange="showValue(this.value)">
+    &nbsp;
+    <span id="range">0</span>
+  </div>
+</div>
+<script type="text/javascript">
+  function showValue(newValue) { $("#range").html(newValue); }
+</script>

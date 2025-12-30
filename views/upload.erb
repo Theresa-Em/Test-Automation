@@ -1,0 +1,64 @@
+<div class="example">
+  <h3>File Uploader</h3>
+  <p>Modifications added</p>
+  <p>Choose a file on your system and then click upload.</p>
+  <form method="POST" enctype="multipart/form-data" onsubmit="return validateFileUpload()">
+    <input id="file-upload" type="file" name="file">
+    <br>
+    <input class="button" id="file-submit" type="submit" value="Upload">
+  </form>
+</div>
+
+<div class="dz-success-mark" id="drag-drop-upload"></div>
+
+<div id="preview-template" style="display: none;">
+  <div class="dz-preview dz-file-preview">
+    <div class="dz-details">
+      <div class="dz-filename"><span data-dz-name></span></div>
+    </div>
+    <div class="dz-success-mark"><span>✔</span></div>
+  </div>
+</div>
+
+<div id="message-container"></div>
+
+<script>
+  function clearFileInput() {
+    var fileInput = document.getElementById("file-upload");
+    fileInput.value = "";
+  }
+
+  function displayMessage(message, isSuccess) {
+    var messageContainer = document.getElementById("message-container");
+    messageContainer.innerHTML = ""; // Clear previous messages
+
+    var h3Element = document.createElement("h3");
+    h3Element.textContent = message;
+    h3Element.style.color = isSuccess ? "green" : "red";
+    messageContainer.appendChild(h3Element);
+  }
+
+  function validateFileUpload() {
+    var fileInput = document.getElementById("file-upload");
+    if (fileInput.files.length === 0) {
+      displayMessage("Please select a file to upload", false);
+      return false;
+    }
+    
+    var file = fileInput.files[0];
+    var fileSizeInMB = file.size / (1024 * 1024);
+    if (fileSizeInMB > 1) {
+      displayMessage("File size should not exceed 1MB", false);
+      clearFileInput();
+      return false;
+    }
+    
+    var fileExtension = file.name.split(".").pop().toLowerCase();
+    if (fileExtension !== "txt") {
+      displayMessage("Only text files are allowed for upload", false);
+      clearFileInput();
+      return false;
+    }
+    return true;
+  }
+</script>

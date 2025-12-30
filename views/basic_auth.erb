@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+</head>
+<body>
+  <script>
+    function showPrompt() {
+      var dialog = document.createElement('dialog');
+      dialog.innerHTML = `
+        <form>
+          <label for="username">Username:</label>
+          <input type="text" id="username" required><br><br>
+          <label for="password">Password:</label>
+          <input type="password" id="password" required><br><br>
+          <button type="submit">Submit</button>
+        </form>
+      `;
+
+      dialog.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        if (username.trim() === '' || password.trim() === '') {
+          alert('Error: Please enter both username and password.');
+        } else {
+          if (username === 'admin' && password === 'admin') {
+            // Render the success message
+            document.write('<div class="example">');
+            document.write('<h3>Basic Auth</h3>');
+            document.write('<p>Congratulations! You must have the proper credentials.</p>');
+            document.write('</div>');
+          } else {
+            // Render the error message
+            document.write('<div class="example">');
+            document.write('<h3>Basic Auth</h3>');
+            document.write('<p>Error: Invalid credentials.</p>');
+            document.write('</div>');
+          }
+        }
+
+        dialog.close();
+      });
+
+      document.body.appendChild(dialog);
+      dialog.showModal();
+    }
+
+    // Call the showPrompt function to display the custom dialog box
+    showPrompt();
+  </script>
+</body>
+</html>
