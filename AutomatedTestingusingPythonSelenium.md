@@ -1,8 +1,3 @@
-
-A Python project named /usercode/automated-testing/ is provided for you to work on. All the required dependencies, including Python, Selenium, and the pytest framework, are already installed.
-
-Explore the files and folders present in the /usercode/automated-testing/ directory and get familiar with the structure of the files and folders.
-
 Before starting the project, start Google Chrome and the demo web application inside the project environment. To do so, open a new terminal using the “+” button available on the terminal side of the file editor and run the following command:
 
 cd /usercode/automated-testing && bash script.sh
